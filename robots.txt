@@ -1,5 +1,6 @@
 # Best Mex Produce - robots.txt
 # https://bmproduce.mx
+# Updated: Deploy path fixed for auto-deployment
 
 User-agent: *
 Allow: /
