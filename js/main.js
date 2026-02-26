@@ -80,6 +80,23 @@ function setWhatsAppLinks(lang) {
   });
 }
 
+function initWhatsAppLinks() {
+  // Set up WhatsApp link click handlers with event delegation
+  const waElements = ["waFloat", "waNav", "waInline", "waFooter"];
+  waElements.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        const href = el.getAttribute('href');
+        if (href && href.startsWith('https://wa.me/')) {
+          window.open(href, '_blank', 'noopener,noreferrer');
+        }
+      });
+    }
+  });
+}
+
 /* --------------------------------------------------------------------------
    Language Switching
    -------------------------------------------------------------------------- */
@@ -327,11 +344,18 @@ function init() {
   applyLang(lang);
 
   // Set up language button listeners
-  document.querySelectorAll(".lang-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-      applyLang(btn.dataset.lang);
+  const langBtns = document.querySelectorAll(".lang-btn");
+  if (langBtns.length > 0) {
+    langBtns.forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        const newLang = btn.dataset.lang;
+        if (newLang) {
+          applyLang(newLang);
+        }
+      });
     });
-  });
+  }
   
   // Initialize enhancements
   initSmoothScroll();
@@ -340,6 +364,7 @@ function init() {
   initLazyLoading();
   initAccessibility();
   initAvailabilityCalendar();
+  initWhatsAppLinks();
 }
 
 // Run on DOM ready
