@@ -245,6 +245,36 @@ function initLazyLoading() {
 }
 
 /* --------------------------------------------------------------------------
+   Availability Calendar Filters
+   -------------------------------------------------------------------------- */
+function initAvailabilityCalendar() {
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const calRows = document.querySelectorAll('.cal-row[data-product]');
+  
+  if (filterBtns.length === 0) return;
+  
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter;
+      
+      // Update active button
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      
+      // Show/hide rows
+      calRows.forEach(row => {
+        const product = row.dataset.product;
+        if (filter === 'all' || product === filter) {
+          row.classList.remove('hidden');
+        } else {
+          row.classList.add('hidden');
+        }
+      });
+    });
+  });
+}
+
+/* --------------------------------------------------------------------------
    Accessibility Enhancements
    -------------------------------------------------------------------------- */
 function initAccessibility() {
@@ -309,6 +339,7 @@ function init() {
   initFormEnhancements();
   initLazyLoading();
   initAccessibility();
+  initAvailabilityCalendar();
 }
 
 // Run on DOM ready

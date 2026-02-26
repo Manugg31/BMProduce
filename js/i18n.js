@@ -54,6 +54,26 @@ const I18N = {
     region_mich_loc: "Zamora",
     regions_note: "* Toda nuestra producción se rige bajo los mismos estándares de inocuidad certificados.",
 
+    // Availability Calendar
+    nav_availability: "Disponibilidad",
+    availability_kicker: "Garantía de Suministro",
+    availability_title: "Disponibilidad Todo el Año",
+    availability_subtitle: "Planificación estratégica de siembra = cero brechas. Siempre hay producción en alguna región.",
+    availability_all: "Todos",
+    availability_legend: "Leyenda de Regiones:",
+    month_jan: "Ene",
+    month_feb: "Feb",
+    month_mar: "Mar",
+    month_apr: "Abr",
+    month_may: "May",
+    month_jun: "Jun",
+    month_jul: "Jul",
+    month_aug: "Ago",
+    month_sep: "Sep",
+    month_oct: "Oct",
+    month_nov: "Nov",
+    month_dec: "Dic",
+
     // Products
     products_kicker: "Catálogo",
     products_title: "Portafolio Especializado",
@@ -200,6 +220,26 @@ const I18N = {
     region_mich_text: "Volcanic soils and mild weather to keep premium quality when northern regions heat up.",
     region_mich_loc: "Zamora",
     regions_note: "* All production follows the same certified food safety standards.",
+
+    // Availability Calendar
+    nav_availability: "Availability",
+    availability_kicker: "Supply Guarantee",
+    availability_title: "Year-Round Availability",
+    availability_subtitle: "Strategic planting schedule = zero gaps. Always production somewhere across our regions.",
+    availability_all: "All",
+    availability_legend: "Region Legend:",
+    month_jan: "Jan",
+    month_feb: "Feb",
+    month_mar: "Mar",
+    month_apr: "Apr",
+    month_may: "May",
+    month_jun: "Jun",
+    month_jul: "Jul",
+    month_aug: "Aug",
+    month_sep: "Sep",
+    month_oct: "Oct",
+    month_nov: "Nov",
+    month_dec: "Dec",
 
     // Products
     products_kicker: "Catalog",
