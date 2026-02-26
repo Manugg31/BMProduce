@@ -1,0 +1,12 @@
+# Best Mex Produce - robots.txt
+# https://bmproduce.mx
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://bmproduce.mx/sitemap.xml
+
+# Disallow admin/private areas (if any)
+Disallow: /admin/
+Disallow: /private/
