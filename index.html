@@ -6,28 +6,56 @@
 
   <title>Best Mex Produce | Premium Mexican Harvest</title>
 
+  <!-- SEO Meta Tags -->
   <meta id="meta-description" name="description" content="Best Mex Produce: alianza de productores en Sinaloa, Nuevo León y Michoacán. Abasto consistente, calidad exportación y certificaciones globales (PrimusGFS, SMETA).">
   <meta name="robots" content="index,follow">
+  <meta name="author" content="Best Mex Produce">
+  <meta name="keywords" content="Mexican produce, chile, jalapeño, serrano, poblano, wholesale produce, Sinaloa, export quality, PrimusGFS">
+  <link rel="canonical" href="https://bmproduce.mx/">
 
-  <!-- Open Graph -->
+  <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Best Mex Produce">
   <meta id="og-title" property="og:title" content="Best Mex Produce | Premium Mexican Harvest">
   <meta id="og-desc" property="og:description" content="Suministro directo del campo con seguridad comercial de EE.UU.">
   <meta property="og:url" content="https://bmproduce.mx">
   <meta property="og:image" content="https://bmproduce.mx/assets/img/hero.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="es_MX">
+  <meta property="og:locale:alternate" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Best Mex Produce | Premium Mexican Harvest">
+  <meta name="twitter:description" content="Alianza de productores mexicanos. Calidad exportación.">
+  <meta name="twitter:image" content="https://bmproduce.mx/assets/img/hero.jpg">
 
   <!-- Favicon -->
   <link rel="icon" href="assets/favicon.ico">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+  <!-- DNS Prefetch & Preconnect for Performance -->
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  <link rel="dns-prefetch" href="//fonts.gstatic.com">
+  <link rel="dns-prefetch" href="//formspree.io">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Critical CSS: Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 
   <!-- External CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
   
   <!-- Site Styles -->
   <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Preload Hero Image -->
+  <link rel="preload" as="image" href="assets/img/hero.jpg">
 
   <!-- Structured Data (JSON-LD) -->
   <script type="application/ld+json">
@@ -37,7 +65,8 @@
     "name": "Best Mex Produce",
     "url": "https://bmproduce.mx",
     "logo": "https://bmproduce.mx/assets/BestMexLogo.svg",
-    "description": "Premium Mexican produce grower alliance across Sinaloa, Nuevo León, and Michoacán.",
+    "description": "Premium Mexican produce grower alliance across Sinaloa, Nuevo León, and Michoacán. Export quality peppers and vegetables.",
+    "foundingDate": "2020",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Guasave",
@@ -53,18 +82,34 @@
     },
     "sameAs": [
       "https://wa.me/5216673908663"
-    ]
+    ],
+    "areaServed": {
+      "@type": "Country",
+      "name": ["United States", "Mexico"]
+    },
+    "knowsAbout": ["Jalapeño", "Serrano", "Poblano", "Anaheim", "Habanero", "Tomatillo", "Mexican Produce"]
   }
   </script>
+
+  <!-- Google Analytics (replace UA-XXXXX with your ID) -->
+  <!-- 
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+  -->
 </head>
 
 <body>
 
   <!-- ========== NAVBAR ========== -->
-  <nav class="navbar navbar-expand-lg fixed-top navbar-dark">
+  <nav class="navbar navbar-expand-lg fixed-top navbar-dark" role="navigation">
     <div class="container">
       <a class="navbar-brand" href="#top" aria-label="Home">
-        <img id="logoNavbar" src="assets/BestMexLogo-wText.svg" alt="Best Mex Produce Logo">
+        <img id="logoNavbar" src="assets/BestMexLogo-wText.svg" alt="Best Mex Produce Logo" width="180" height="65">
       </a>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -91,7 +136,7 @@
 
           <li class="nav-item ms-lg-2 mt-3 mt-lg-0">
             <a id="waNav" class="nav-link" href="#" target="_blank" rel="noopener" aria-label="WhatsApp">
-              <i class="fa-brands fa-whatsapp" style="font-size:18px; color:#25D366;"></i>
+              <i class="fa-brands fa-whatsapp wa-icon"></i>
             </a>
           </li>
         </ul>
@@ -102,7 +147,7 @@
   <!-- ========== HERO ========== -->
   <header id="top" class="hero">
     <div class="container">
-      <p class="text-uppercase mb-3 hero-tagline" data-i18n="hero_regions">
+      <p class="hero-tagline mb-3" data-i18n="hero_regions">
         Sinaloa • Nuevo León • Michoacán
       </p>
 
@@ -110,8 +155,7 @@
         El Auténtico Carácter<br>del Campo Mexicano
       </h1>
 
-      <p class="mb-5 text-white opacity-90 mx-auto" style="max-width: 700px; font-size: 1.25rem; font-weight: 300;"
-         data-i18n-html="hero_subtitle">
+      <p class="hero-subtitle mb-5 text-white opacity-90 mx-auto" data-i18n-html="hero_subtitle">
         Pasión por la tierra y excelencia en la cosecha.<br>
         Una alianza de productores unidos para garantizar calidad todo el año.
       </p>
@@ -124,10 +168,9 @@
   <section id="nosotros" class="section-padding container">
     <div class="row align-items-center">
       <div class="col-lg-6 mb-5 mb-lg-0">
-        <div style="position: relative;">
-          <div style="position: absolute; top: -15px; left: -15px; width: 100%; height: 100%; border: 2px solid var(--mango-solar); z-index: 0;"></div>
-          <img src="assets/img/hero.jpg" alt="Our Structure" class="img-fluid shadow-lg position-relative"
-               style="z-index: 1; filter: sepia(18%) contrast(1.1);" loading="lazy" decoding="async">
+        <div class="img-frame">
+          <img src="assets/img/hero.jpg" alt="Estructura de Best Mex Produce" 
+               class="img-fluid shadow-lg" loading="lazy" decoding="async" width="600" height="400">
         </div>
       </div>
 
@@ -142,22 +185,22 @@
           <strong>Sinaloa, Nuevo León y Michoacán</strong>.
         </p>
 
-        <p style="color: #e0e0e0; font-weight: 300; line-height: 1.8;" data-i18n-html="about_p1">
+        <p class="text-body-light" data-i18n-html="about_p1">
           <strong>Best Mex Produce</strong> es la entidad estadounidense establecida para representar los intereses de este grupo de horticultores de élite.
         </p>
 
-        <p style="color: #e0e0e0; font-weight: 300; line-height: 1.8;" data-i18n-html="about_p2">
+        <p class="text-body-light" data-i18n-html="about_p2">
           No somos intermediarios externos; somos el <strong>brazo comercial directo</strong> en Estados Unidos.
           Esta estructura te ofrece lo mejor de dos mundos: capacidad productiva y certeza legal, logística y financiera.
         </p>
 
-        <div class="row mt-5 pt-4 border-top" style="border-color: rgba(255,255,255,0.1) !important;">
+        <div class="row mt-5 pt-4 border-top border-subtle">
           <div class="col-6">
             <div class="d-flex align-items-center">
-              <i class="fas fa-flag-usa fa-2x me-3" style="color: var(--gris-pizarra);"></i>
+              <i class="fas fa-flag-usa fa-2x me-3 text-muted-custom"></i>
               <div>
                 <p class="mb-0 text-white fw-bold small" data-i18n="about_us_entity_title">US Entity</p>
-                <small style="color: var(--gris-pizarra);" data-i18n="about_us_entity_sub">Representación Legal</small>
+                <small class="text-muted-custom" data-i18n="about_us_entity_sub">Representación Legal</small>
               </div>
             </div>
           </div>
@@ -166,7 +209,7 @@
               <i class="fas fa-handshake fa-2x me-3 text-mango"></i>
               <div>
                 <p class="mb-0 text-white fw-bold small" data-i18n="about_direct_title">Trato Directo</p>
-                <small style="color: var(--gris-pizarra);" data-i18n="about_direct_sub">Grower Alliance</small>
+                <small class="text-muted-custom" data-i18n="about_direct_sub">Grower Alliance</small>
               </div>
             </div>
           </div>
@@ -177,7 +220,7 @@
             <i class="fas fa-clipboard-check fa-2x text-verde"></i>
             <div>
               <p class="mb-1 text-white fw-bold" data-i18n="qa_title">Inocuidad & Calidad</p>
-              <p class="mb-0" style="color: #d7e3df; font-weight: 300; line-height: 1.7;" data-i18n-html="qa_text">
+              <p class="mb-0 text-muted-custom font-weight-300" data-i18n-html="qa_text">
                 Procesos estandarizados, trazabilidad por lote, y auditorías en campo/empacadora.
                 <span class="text-mango fw-bold">PrimusGFS, Global G.A.P., SMETA.</span>
               </p>
@@ -194,7 +237,7 @@
       <div class="section-header">
         <span data-i18n="regions_kicker">Arquitectura de Suministro</span>
         <h2 data-i18n="regions_title">Diversificación Estratégica</h2>
-        <p class="mx-auto" style="max-width: 700px; color: var(--gris-pizarra);" data-i18n="regions_subtitle">
+        <p class="mx-auto max-w-700" data-i18n="regions_subtitle">
           Producimos la misma calidad en tres zonas climáticas distintas. Nuestro escudo contra la estacionalidad para garantizarte abasto continuo.
         </p>
       </div>
@@ -204,13 +247,12 @@
         <div class="col-md-4">
           <div class="region-card text-center h-100">
             <div class="mb-3"><i class="fas fa-pepper-hot fa-3x text-verde"></i></div>
-            <h4 class="h3 region-title text-uppercase mb-2" data-i18n="region_sinaloa_title">Sinaloa</h4>
-            <span class="badge rounded-pill mb-3" style="background-color: var(--nopal-profundo); color: white; padding: 8px 15px;"
-              data-i18n="region_sinaloa_badge">Origen & Volumen</span>
+            <h3 class="h4 region-title text-uppercase mb-2" data-i18n="region_sinaloa_title">Sinaloa</h3>
+            <span class="badge rounded-pill bg-dark text-white mb-3 px-3 py-2" data-i18n="region_sinaloa_badge">Origen & Volumen</span>
             <p class="text-muted small px-3" data-i18n-html="region_sinaloa_text">
               La cuna de Best Mex Produce. Aprovechamos los valles fértiles del norte para generar el <strong>volumen</strong> necesario durante Invierno y Primavera.
             </p>
-            <hr class="w-25 mx-auto my-3" style="border-color: var(--tierra-roja);">
+            <hr class="w-25 mx-auto my-3">
             <p class="small fw-bold text-tierra">
               <i class="fas fa-map-marker-alt me-1"></i> <span data-i18n="region_sinaloa_loc">Guasave / Culiacán</span>
             </p>
@@ -221,13 +263,12 @@
         <div class="col-md-4">
           <div class="region-card text-center h-100">
             <div class="mb-3"><i class="fas fa-pepper-hot fa-3x text-verde"></i></div>
-            <h4 class="h3 region-title text-uppercase mb-2" data-i18n="region_nl_title">Nuevo León</h4>
-            <span class="badge rounded-pill mb-3" style="background-color: var(--nopal-profundo); color: white; padding: 8px 15px;"
-              data-i18n="region_nl_badge">Agilidad Logística</span>
+            <h3 class="h4 region-title text-uppercase mb-2" data-i18n="region_nl_title">Nuevo León</h3>
+            <span class="badge rounded-pill bg-dark text-white mb-3 px-3 py-2" data-i18n="region_nl_badge">Agilidad Logística</span>
             <p class="text-muted small px-3" data-i18n-html="region_nl_text">
               Producción estratégica con conexión directa a la frontera Este. Reduce tiempos de tránsito hacia Texas y la Costa Este.
             </p>
-            <hr class="w-25 mx-auto my-3" style="border-color: var(--tierra-roja);">
+            <hr class="w-25 mx-auto my-3">
             <p class="small fw-bold text-tierra">
               <i class="fas fa-map-marker-alt me-1"></i> <span data-i18n="region_nl_loc">Cadereyta</span>
             </p>
@@ -238,13 +279,12 @@
         <div class="col-md-4">
           <div class="region-card text-center h-100">
             <div class="mb-3"><i class="fas fa-pepper-hot fa-3x text-verde"></i></div>
-            <h4 class="h3 region-title text-uppercase mb-2" data-i18n="region_mich_title">Michoacán</h4>
-            <span class="badge rounded-pill mb-3" style="background-color: var(--nopal-profundo); color: white; padding: 8px 15px;"
-              data-i18n="region_mich_badge">Suelos de Altura</span>
+            <h3 class="h4 region-title text-uppercase mb-2" data-i18n="region_mich_title">Michoacán</h3>
+            <span class="badge rounded-pill bg-dark text-white mb-3 px-3 py-2" data-i18n="region_mich_badge">Suelos de Altura</span>
             <p class="text-muted small px-3" data-i18n-html="region_mich_text">
               Suelos volcánicos y clima templado para sostener calidad premium cuando el norte eleva temperaturas.
             </p>
-            <hr class="w-25 mx-auto my-3" style="border-color: var(--tierra-roja);">
+            <hr class="w-25 mx-auto my-3">
             <p class="small fw-bold text-tierra">
               <i class="fas fa-map-marker-alt me-1"></i> <span data-i18n="region_mich_loc">Zamora</span>
             </p>
@@ -253,7 +293,7 @@
       </div>
 
       <div class="text-center mt-5">
-        <p class="small fst-italic" style="color: var(--gris-pizarra);" data-i18n="regions_note">
+        <p class="small fst-italic text-muted" data-i18n="regions_note">
           * Toda nuestra producción se rige bajo los mismos estándares de inocuidad certificados.
         </p>
       </div>
@@ -265,7 +305,7 @@
     <div class="section-header">
       <span data-i18n="products_kicker">Catálogo</span>
       <h2 data-i18n="products_title">Portafolio Especializado</h2>
-      <p class="mx-auto text-white opacity-75" style="max-width: 650px;" data-i18n="products_subtitle">
+      <p class="mx-auto text-white opacity-75 max-w-650" data-i18n="products_subtitle">
         Variedades clave para programas retail y foodservice. Selección enfocada en consistencia, presentación y confianza semana a semana.
       </p>
     </div>
@@ -273,8 +313,8 @@
     <div class="row g-4">
       <!-- Jalapeño -->
       <div class="col-lg-3 col-md-6">
-        <div class="product-card rounded-2">
-          <img src="assets/img/jalapeno.png?v=2" class="w-100" alt="Jalapeño" loading="lazy" decoding="async">
+        <article class="product-card rounded-2">
+          <img src="assets/img/jalapeno.png?v=2" alt="Chile Jalapeño" loading="lazy" decoding="async" width="300" height="220">
           <div class="product-info">
             <h3 class="h4 product-title" data-i18n="p_jalapeno_name">Chile Jalapeño</h3>
             <div class="product-subtitle" data-i18n="p_jalapeno_tagline">Nuestro estándar de consistencia</div>
@@ -283,13 +323,13 @@
             </p>
             <span class="technical-badge" data-i18n="p_badge_program">Listo para programa</span>
           </div>
-        </div>
+        </article>
       </div>
 
       <!-- Serrano -->
       <div class="col-lg-3 col-md-6">
-        <div class="product-card rounded-2">
-          <img src="assets/img/serrano.png?v=2" class="w-100" alt="Serrano" loading="lazy" decoding="async">
+        <article class="product-card rounded-2">
+          <img src="assets/img/serrano.png?v=2" alt="Chile Serrano" loading="lazy" decoding="async" width="300" height="220">
           <div class="product-info">
             <h3 class="h4 product-title" data-i18n="p_serrano_name">Chile Serrano</h3>
             <div class="product-subtitle" data-i18n="p_serrano_tagline">Frescura que se nota</div>
@@ -298,13 +338,13 @@
             </p>
             <span class="technical-badge" data-i18n="p_badge_reliable">Abasto confiable</span>
           </div>
-        </div>
+        </article>
       </div>
 
       <!-- Poblano -->
       <div class="col-lg-3 col-md-6">
-        <div class="product-card rounded-2">
-          <img src="assets/img/poblano.png?v=2" class="w-100" alt="Poblano" loading="lazy" decoding="async">
+        <article class="product-card rounded-2">
+          <img src="assets/img/poblano.png?v=2" alt="Chile Poblano" loading="lazy" decoding="async" width="300" height="220">
           <div class="product-info">
             <h3 class="h4 product-title" data-i18n="p_poblano_name">Chile Poblano</h3>
             <div class="product-subtitle" data-i18n="p_poblano_tagline">Presencia premium</div>
@@ -313,13 +353,13 @@
             </p>
             <span class="technical-badge" data-i18n="p_badge_presentation">Gran presentación</span>
           </div>
-        </div>
+        </article>
       </div>
 
       <!-- Anaheim -->
       <div class="col-lg-3 col-md-6">
-        <div class="product-card rounded-2">
-          <img src="assets/img/anaheim.png?v=2" class="w-100" alt="Anaheim" loading="lazy" decoding="async">
+        <article class="product-card rounded-2">
+          <img src="assets/img/anaheim.png?v=2" alt="Chile Anaheim" loading="lazy" decoding="async" width="300" height="220">
           <div class="product-info">
             <h3 class="h4 product-title" data-i18n="p_anaheim_name">Chile Anaheim</h3>
             <div class="product-subtitle" data-i18n="p_anaheim_tagline">Versátil y consistente</div>
@@ -328,13 +368,13 @@
             </p>
             <span class="technical-badge" data-i18n="p_badge_display">Ideal para display</span>
           </div>
-        </div>
+        </article>
       </div>
 
       <!-- Yellow Hot -->
       <div class="col-lg-3 col-md-6">
-        <div class="product-card rounded-2">
-          <img src="assets/img/caribe.png?v=2" class="w-100" alt="Güero / Yellow Hot" loading="lazy" decoding="async">
+        <article class="product-card rounded-2">
+          <img src="assets/img/caribe.png?v=2" alt="Chile Güero / Yellow Hot" loading="lazy" decoding="async" width="300" height="220">
           <div class="product-info">
             <h3 class="h4 product-title" data-i18n="p_yellowhot_name">Chile Güero (Caribe)</h3>
             <div class="product-subtitle" data-i18n="p_yellowhot_tagline">Color que destaca</div>
@@ -343,13 +383,13 @@
             </p>
             <span class="technical-badge" data-i18n="p_badge_shelf">Atractivo en anaquel</span>
           </div>
-        </div>
+        </article>
       </div>
 
       <!-- Habanero -->
       <div class="col-lg-3 col-md-6">
-        <div class="product-card rounded-2">
-          <img src="assets/img/habanero.png?v=2" class="w-100" alt="Habanero" loading="lazy" decoding="async">
+        <article class="product-card rounded-2">
+          <img src="assets/img/habanero.png?v=2" alt="Chile Habanero" loading="lazy" decoding="async" width="300" height="220">
           <div class="product-info">
             <h3 class="h4 product-title" data-i18n="p_habanero_name">Habanero</h3>
             <div class="product-subtitle" data-i18n="p_habanero_tagline">Impacto y aroma</div>
@@ -358,13 +398,13 @@
             </p>
             <span class="technical-badge" data-i18n="p_badge_premium">Selección premium</span>
           </div>
-        </div>
+        </article>
       </div>
 
       <!-- Tomatillo -->
       <div class="col-lg-3 col-md-6">
-        <div class="product-card rounded-2">
-          <img src="assets/img/tomatillo.png?v=2" class="w-100" alt="Tomatillo" loading="lazy" decoding="async">
+        <article class="product-card rounded-2">
+          <img src="assets/img/tomatillo.png?v=2" alt="Tomatillo" loading="lazy" decoding="async" width="300" height="220">
           <div class="product-info">
             <h3 class="h4 product-title" data-i18n="p_tomatillo_name">Tomatillo</h3>
             <div class="product-subtitle" data-i18n="p_tomatillo_tagline">Base para salsas</div>
@@ -373,7 +413,7 @@
             </p>
             <span class="technical-badge" data-i18n="p_badge_consistent">Calidad constante</span>
           </div>
-        </div>
+        </article>
       </div>
     </div>
 
@@ -392,11 +432,11 @@
     <div class="container">
       <div class="row align-items-center">
         <div class="col-lg-5 mb-4 mb-lg-0">
-          <h2 class="display-5 fw-bold mb-4" style="color: var(--nopal-profundo);" data-i18n="impact_title">Cosecha con Propósito</h2>
-          <p class="lead mb-4" style="color: #555;" data-i18n-html="impact_lead">
+          <h2 class="display-5 fw-bold mb-4" data-i18n="impact_title">Cosecha con Propósito</h2>
+          <p class="lead mb-4" data-i18n-html="impact_lead">
             La trazabilidad no es solo saber de dónde viene el producto, es saber <strong>a quién beneficia</strong>.
           </p>
-          <p style="color: #666;" data-i18n-html="impact_text">
+          <p data-i18n-html="impact_text">
             Al operar como una entidad directa, buscamos que el valor regrese a quienes trabajan la tierra.
             Promovemos <strong>Comercio Ético</strong> y <strong>Bienestar Laboral</strong>.
           </p>
@@ -405,21 +445,21 @@
         <div class="col-lg-6 offset-lg-1">
           <div class="row g-4 text-center">
             <div class="col-6">
-              <div class="p-4 border rounded bg-white shadow-sm">
+              <div class="impact-card">
                 <i class="fas fa-users fa-2x mb-3 text-tierra"></i>
-                <h5 class="fw-bold" style="color: var(--nopal-profundo);" data-i18n="impact_card1">Comercio Ético</h5>
+                <h4 class="h5 fw-bold" data-i18n="impact_card1">Comercio Ético</h4>
               </div>
             </div>
             <div class="col-6">
-              <div class="p-4 border rounded bg-white shadow-sm">
+              <div class="impact-card">
                 <i class="fas fa-shield-alt fa-2x mb-3 text-verde"></i>
-                <h5 class="fw-bold" style="color: var(--nopal-profundo);" data-i18n="impact_card2">Integridad Laboral</h5>
+                <h4 class="h5 fw-bold" data-i18n="impact_card2">Integridad Laboral</h4>
               </div>
             </div>
           </div>
 
           <div class="mt-4 p-4 rounded bg-white shadow-sm">
-            <p class="mb-0" style="color:#666;" data-i18n-html="impact_note">
+            <p class="mb-0" data-i18n-html="impact_note">
               <strong>Food Safety & Social Responsibility</strong> — estandarización, trazabilidad y enfoque en bienestar.
             </p>
           </div>
@@ -433,7 +473,7 @@
     <div class="section-header">
       <span data-i18n="contact_kicker">Contacto</span>
       <h2 data-i18n="contact_title">Hablemos de tu Programa</h2>
-      <p class="mx-auto text-white opacity-75" style="max-width: 720px;" data-i18n="contact_subtitle">
+      <p class="mx-auto text-white opacity-75 max-w-720" data-i18n="contact_subtitle">
         Cuéntanos qué necesitas (volúmenes, ventanas, destino). Te respondemos con una propuesta clara y rápida.
       </p>
     </div>
@@ -445,40 +485,40 @@
           <div class="contact-label" data-i18n="contact_info_label">Información</div>
 
           <div class="d-flex gap-3 align-items-start mb-3">
-            <i class="fas fa-envelope text-mango" style="margin-top:4px;"></i>
+            <i class="fas fa-envelope contact-icon"></i>
             <div>
               <div class="fw-bold text-white" data-i18n="contact_email_label">Email</div>
-              <div class="text-white-50">sales@bmproduce.mx</div>
+              <a href="mailto:sales@bmproduce.mx" class="text-white-50 text-decoration-none">sales@bmproduce.mx</a>
             </div>
           </div>
 
           <div class="d-flex gap-3 align-items-start mb-3">
-            <i class="fas fa-phone text-mango" style="margin-top:4px;"></i>
+            <i class="fas fa-phone contact-icon"></i>
             <div>
               <div class="fw-bold text-white" data-i18n="contact_phone_label">Teléfono</div>
-              <div class="text-white-50">+52 (667) 390 8663</div>
+              <a href="tel:+526673908663" class="text-white-50 text-decoration-none">+52 (667) 390 8663</a>
             </div>
           </div>
 
           <div class="d-flex gap-3 align-items-start">
-            <i class="fas fa-location-dot text-mango" style="margin-top:4px;"></i>
+            <i class="fas fa-location-dot contact-icon"></i>
             <div>
               <div class="fw-bold text-white" data-i18n="contact_location_label">Ubicación</div>
               <div class="text-white-50" data-i18n="footer_loc">Guasave, Sinaloa, MX</div>
             </div>
           </div>
 
-          <hr style="border-color: rgba(255,255,255,0.10); margin: 18px 0;">
+          <hr class="border-subtle my-4">
 
           <div class="d-flex align-items-center gap-2">
-            <i class="fa-brands fa-whatsapp" style="font-size:18px; color:#25D366;"></i>
-            <a id="waInline" href="#" target="_blank" rel="noopener" style="color: var(--crema-natural); text-decoration:none;"
+            <i class="fa-brands fa-whatsapp wa-icon"></i>
+            <a id="waInline" href="#" target="_blank" rel="noopener" class="text-white text-decoration-none"
                data-i18n="contact_whatsapp_cta">
               Escríbenos por WhatsApp
             </a>
           </div>
 
-          <p class="mt-3 mb-0 small" style="color: rgba(244,241,232,0.7);" data-i18n="contact_privacy_hint">
+          <p class="mt-3 mb-0 small text-muted-custom" data-i18n="contact_privacy_hint">
             Al enviar este formulario aceptas nuestro Aviso de Privacidad.
           </p>
         </div>
@@ -493,19 +533,19 @@
             <div class="row g-3">
               <div class="col-md-6">
                 <label class="form-label text-white" for="name" data-i18n="form_name">Nombre</label>
-                <input class="form-control" id="name" name="name" type="text" required
+                <input class="form-control" id="name" name="name" type="text" required autocomplete="name"
                        data-i18n-placeholder="form_name_ph" placeholder="Tu nombre">
               </div>
 
               <div class="col-md-6">
                 <label class="form-label text-white" for="email" data-i18n="form_email">Email</label>
-                <input class="form-control" id="email" name="email" type="email" required
+                <input class="form-control" id="email" name="email" type="email" required autocomplete="email"
                        data-i18n-placeholder="form_email_ph" placeholder="tu@empresa.com">
               </div>
 
               <div class="col-md-6">
                 <label class="form-label text-white" for="company" data-i18n="form_company">Empresa</label>
-                <input class="form-control" id="company" name="company" type="text"
+                <input class="form-control" id="company" name="company" type="text" autocomplete="organization"
                        data-i18n-placeholder="form_company_ph" placeholder="Nombre de tu empresa">
               </div>
 
@@ -521,7 +561,7 @@
 
               <div class="col-12">
                 <label class="form-label text-white" for="message" data-i18n="form_message">Mensaje</label>
-                <textarea class="form-control" id="message" name="message" rows="6" required
+                <textarea class="form-control" id="message" name="message" rows="5" required
                           data-i18n-placeholder="form_message_ph"
                           placeholder="Cuéntanos destino, volumen estimado y ventana deseada."></textarea>
                 <div class="form-text" data-i18n="form_note">
@@ -531,7 +571,7 @@
 
               <div class="col-12 d-flex flex-wrap gap-3 align-items-center">
                 <button class="btn-mango" type="submit" data-i18n="form_submit">Enviar</button>
-                <a href="assets/PrivacyPolicy.pdf" target="_blank" class="text-decoration-none" style="color: rgba(244,241,232,0.85);"
+                <a href="assets/PrivacyPolicy.pdf" target="_blank" class="text-decoration-none text-muted-custom"
                    data-i18n="form_privacy_link">Ver Aviso de Privacidad</a>
               </div>
             </div>
@@ -546,7 +586,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-4 mb-4">
-          <img src="assets/BestMexLogo.svg" alt="Best Mex Logo" style="max-height: 60px; filter: brightness(0) invert(1); opacity: 0.9; margin-bottom: 20px;">
+          <img src="assets/BestMexLogo.svg" alt="Best Mex Logo" class="footer-logo" width="120" height="60">
           <p class="small" data-i18n="footer_tagline">
             Compromiso con la tierra, pasión por la calidad y lealtad con nuestros productores.
           </p>
@@ -564,34 +604,32 @@
 
         <div class="col-md-4 mb-4">
           <h5 class="mb-4" data-i18n="footer_contact">Contacto Comercial</h5>
-          <ul class="list-unstyled" style="color: var(--crema-natural);">
+          <ul class="list-unstyled">
             <li class="mb-3">
               <i class="fas fa-map-marker-alt me-2 text-tierra"></i>
               <span data-i18n="footer_loc">Guasave, Sinaloa, MX</span>
             </li>
             <li class="mb-3">
               <i class="fas fa-envelope me-2 text-tierra"></i>
-              sales@bmproduce.mx
+              <a href="mailto:sales@bmproduce.mx">sales@bmproduce.mx</a>
             </li>
             <li class="mb-3">
               <i class="fas fa-phone me-2 text-tierra"></i>
-              +52 (667) 390 8663
+              <a href="tel:+526673908663">+52 (667) 390 8663</a>
             </li>
             <li class="mb-3">
               <i class="fa-brands fa-whatsapp me-2" style="color:#25D366;"></i>
-              <a id="waFooter" href="#" target="_blank" rel="noopener" style="color: var(--crema-natural); text-decoration:none;"
-                 data-i18n="footer_whatsapp">WhatsApp</a>
+              <a id="waFooter" href="#" target="_blank" rel="noopener" data-i18n="footer_whatsapp">WhatsApp</a>
             </li>
           </ul>
         </div>
       </div>
 
       <div class="d-flex flex-column flex-md-row gap-3 justify-content-between align-items-md-center mt-4 pt-4 border-top border-secondary">
-        <small style="color: var(--gris-pizarra);" data-i18n="footer_copy">
+        <small data-i18n="footer_copy">
           &copy; 2025 Best Mex Produce. Todos los derechos reservados.
         </small>
-        <a href="assets/PrivacyPolicy.pdf" target="_blank" style="color: var(--gris-pizarra); text-decoration:none;"
-           data-i18n="footer_privacy_link">Aviso de Privacidad</a>
+        <a href="assets/PrivacyPolicy.pdf" target="_blank" data-i18n="footer_privacy_link">Aviso de Privacidad</a>
       </div>
     </div>
   </footer>
@@ -604,6 +642,6 @@
   <!-- ========== SCRIPTS ========== -->
   <script src="js/i18n.js"></script>
   <script src="js/main.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
 </body>
 </html>

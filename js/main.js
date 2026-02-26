@@ -1,20 +1,68 @@
 /* ==========================================================================
    Best Mex Produce - Main Application Logic
+   Version: 2.0 - Performance Optimized
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
    Configuration
    -------------------------------------------------------------------------- */
-const CONFIG = {
+const CONFIG = Object.freeze({
   // WhatsApp number: 52 (Mexico) + 1 (mobile) + 6673908663
   waNumber: "5216673908663",
   
   // Default WhatsApp messages by language
-  waMessages: {
+  waMessages: Object.freeze({
     es: "Hola, me interesa conocer disponibilidad y condiciones para programa. ¿Podemos platicar?",
     en: "Hi, I'm interested in availability and program terms. Can we connect?"
+  }),
+  
+  // Storage key for language preference
+  langStorageKey: "bmp_lang",
+  
+  // Default language
+  defaultLang: "es"
+});
+
+/* --------------------------------------------------------------------------
+   Utility Functions
+   -------------------------------------------------------------------------- */
+
+/**
+ * Safely get item from localStorage
+ */
+function getStorageItem(key) {
+  try {
+    return localStorage.getItem(key);
+  } catch (e) {
+    return null;
   }
-};
+}
+
+/**
+ * Safely set item in localStorage
+ */
+function setStorageItem(key, value) {
+  try {
+    localStorage.setItem(key, value);
+  } catch (e) {
+    // localStorage not available, fail silently
+  }
+}
+
+/**
+ * Debounce function for performance
+ */
+function debounce(func, wait) {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+}
 
 /* --------------------------------------------------------------------------
    WhatsApp Links
@@ -26,7 +74,9 @@ function setWhatsAppLinks(lang) {
   const waElements = ["waFloat", "waNav", "waInline", "waFooter"];
   waElements.forEach(id => {
     const el = document.getElementById(id);
-    if (el) el.href = href;
+    if (el) {
+      el.href = href;
+    }
   });
 }
 
@@ -34,66 +84,201 @@ function setWhatsAppLinks(lang) {
    Language Switching
    -------------------------------------------------------------------------- */
 function applyLang(lang) {
-  const dict = I18N[lang] || I18N.es;
+  // Validate language exists
+  if (!I18N[lang]) {
+    lang = CONFIG.defaultLang;
+  }
+  
+  const dict = I18N[lang];
 
   // Set document language
   document.documentElement.lang = lang;
 
   // Update title and meta tags
-  document.title = dict.doc_title || document.title;
+  if (dict.doc_title) {
+    document.title = dict.doc_title;
+  }
   
-  const metaDesc = document.getElementById("meta-description");
-  if (metaDesc && dict.meta_desc) {
-    metaDesc.setAttribute("content", dict.meta_desc);
-  }
-
-  const ogTitle = document.getElementById("og-title");
-  if (ogTitle && dict.og_title) {
-    ogTitle.setAttribute("content", dict.og_title);
-  }
-
-  const ogDesc = document.getElementById("og-desc");
-  if (ogDesc && dict.og_desc) {
-    ogDesc.setAttribute("content", dict.og_desc);
-  }
-
-  // Update text content (plain text)
-  document.querySelectorAll("[data-i18n]").forEach(el => {
-    const key = el.getAttribute("data-i18n");
-    if (dict[key] != null) {
-      el.textContent = dict[key];
+  // Update meta tags
+  const metaUpdates = [
+    { id: "meta-description", attr: "content", key: "meta_desc" },
+    { id: "og-title", attr: "content", key: "og_title" },
+    { id: "og-desc", attr: "content", key: "og_desc" }
+  ];
+  
+  metaUpdates.forEach(({ id, attr, key }) => {
+    const el = document.getElementById(id);
+    if (el && dict[key]) {
+      el.setAttribute(attr, dict[key]);
     }
   });
 
-  // Update HTML content (allows <br>, <strong>, etc.)
-  document.querySelectorAll("[data-i18n-html]").forEach(el => {
-    const key = el.getAttribute("data-i18n-html");
-    if (dict[key] != null) {
-      el.innerHTML = dict[key];
-    }
-  });
+  // Update text content (plain text) - using requestAnimationFrame for performance
+  requestAnimationFrame(() => {
+    document.querySelectorAll("[data-i18n]").forEach(el => {
+      const key = el.getAttribute("data-i18n");
+      if (dict[key] != null) {
+        el.textContent = dict[key];
+      }
+    });
 
-  // Update placeholders
-  document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
-    const key = el.getAttribute("data-i18n-placeholder");
-    if (dict[key] != null) {
-      el.setAttribute("placeholder", dict[key]);
-    }
+    // Update HTML content (allows <br>, <strong>, etc.)
+    document.querySelectorAll("[data-i18n-html]").forEach(el => {
+      const key = el.getAttribute("data-i18n-html");
+      if (dict[key] != null) {
+        el.innerHTML = dict[key];
+      }
+    });
+
+    // Update placeholders
+    document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
+      const key = el.getAttribute("data-i18n-placeholder");
+      if (dict[key] != null) {
+        el.setAttribute("placeholder", dict[key]);
+      }
+    });
   });
 
   // Update language button states
   document.querySelectorAll(".lang-btn").forEach(btn => {
-    btn.classList.toggle("active", btn.dataset.lang === lang);
+    const isActive = btn.dataset.lang === lang;
+    btn.classList.toggle("active", isActive);
+    btn.setAttribute("aria-pressed", isActive);
   });
 
   // Update WhatsApp links
   setWhatsAppLinks(lang);
 
   // Persist language preference
-  try {
-    localStorage.setItem("bmp_lang", lang);
-  } catch (e) {
-    // localStorage not available, fail silently
+  setStorageItem(CONFIG.langStorageKey, lang);
+}
+
+/* --------------------------------------------------------------------------
+   Smooth Scroll Enhancement (for older browsers)
+   -------------------------------------------------------------------------- */
+function initSmoothScroll() {
+  // Only add if native smooth scroll is not supported
+  if (!('scrollBehavior' in document.documentElement.style)) {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const target = document.querySelector(targetId);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Navbar Scroll Effect
+   -------------------------------------------------------------------------- */
+function initNavbarScroll() {
+  const navbar = document.querySelector('.navbar');
+  if (!navbar) return;
+  
+  const handleScroll = debounce(() => {
+    if (window.scrollY > 50) {
+      navbar.classList.add('navbar-scrolled');
+    } else {
+      navbar.classList.remove('navbar-scrolled');
+    }
+  }, 10);
+  
+  window.addEventListener('scroll', handleScroll, { passive: true });
+}
+
+/* --------------------------------------------------------------------------
+   Form Enhancement
+   -------------------------------------------------------------------------- */
+function initFormEnhancements() {
+  const form = document.getElementById('contactForm');
+  if (!form) return;
+  
+  form.addEventListener('submit', function(e) {
+    const submitBtn = form.querySelector('button[type="submit"]');
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Enviando...';
+      
+      // Re-enable after 5 seconds in case of error
+      setTimeout(() => {
+        submitBtn.disabled = false;
+        submitBtn.textContent = submitBtn.getAttribute('data-i18n') === 'form_submit' ? 'Enviar' : 'Send';
+      }, 5000);
+    }
+  });
+}
+
+/* --------------------------------------------------------------------------
+   Lazy Loading Enhancement
+   -------------------------------------------------------------------------- */
+function initLazyLoading() {
+  // Native lazy loading is already set via HTML attributes
+  // This adds Intersection Observer for additional optimizations
+  
+  if ('IntersectionObserver' in window) {
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          if (img.dataset.src) {
+            img.src = img.dataset.src;
+            img.removeAttribute('data-src');
+          }
+          observer.unobserve(img);
+        }
+      });
+    }, {
+      rootMargin: '50px 0px',
+      threshold: 0.01
+    });
+    
+    document.querySelectorAll('img[data-src]').forEach(img => {
+      imageObserver.observe(img);
+    });
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Accessibility Enhancements
+   -------------------------------------------------------------------------- */
+function initAccessibility() {
+  // Skip link for keyboard users
+  const skipLink = document.querySelector('.skip-link');
+  if (skipLink) {
+    skipLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = document.querySelector(skipLink.getAttribute('href'));
+      if (target) {
+        target.tabIndex = -1;
+        target.focus();
+      }
+    });
+  }
+  
+  // Reduce motion preference
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (prefersReducedMotion.matches) {
+    document.documentElement.classList.add('reduce-motion');
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Performance Monitoring (optional)
+   -------------------------------------------------------------------------- */
+function logPerformance() {
+  if ('performance' in window && process?.env?.NODE_ENV === 'development') {
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        const perfData = performance.getEntriesByType('navigation')[0];
+        console.log('Page Load Time:', perfData.loadEventEnd - perfData.startTime, 'ms');
+      }, 0);
+    });
   }
 }
 
@@ -102,14 +287,10 @@ function applyLang(lang) {
    -------------------------------------------------------------------------- */
 function init() {
   // Determine initial language
-  let lang = "es";
-  try {
-    const saved = localStorage.getItem("bmp_lang");
-    if (saved && I18N[saved]) {
-      lang = saved;
-    }
-  } catch (e) {
-    // localStorage not available, use default
+  let lang = CONFIG.defaultLang;
+  const saved = getStorageItem(CONFIG.langStorageKey);
+  if (saved && I18N[saved]) {
+    lang = saved;
   }
 
   // Apply initial language
@@ -121,7 +302,18 @@ function init() {
       applyLang(btn.dataset.lang);
     });
   });
+  
+  // Initialize enhancements
+  initSmoothScroll();
+  initNavbarScroll();
+  initFormEnhancements();
+  initLazyLoading();
+  initAccessibility();
 }
 
 // Run on DOM ready
-document.addEventListener("DOMContentLoaded", init);
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
